@@ -36,11 +36,35 @@ void Print()
 	}
 }
 
+void Sort_Temp(int First, int Second)
+{
+	int Temp = LottoArray[First];
+	LottoArray[First] = LottoArray[Second];
+	LottoArray[Second] = Temp;
+}
+
+void Sorting()
+{
+	int pivot = 1;
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = pivot; j < 6; j++)
+		{
+			if (LottoArray[i] > LottoArray[j])
+			{
+				Sort_Temp(i,j);
+			}		
+		}
+		pivot++;
+	}
+}
+
 int main()
 {
 	srand((unsigned int)time(NULL));
 
 	Init();
 	Shuffle();
+	Sorting();
 	Print();
 }
